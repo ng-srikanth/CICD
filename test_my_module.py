@@ -13,7 +13,7 @@ def test_addition_mixed_numbers():
     assert add(3, -5) == -2
 
 def test_addition_zero():
-    assert add(3, 0) == 2
+    assert add(3, 0) == 3
     assert add(0, 5) == 5
     assert add(0, 0) == 0
 
