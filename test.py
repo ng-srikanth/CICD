@@ -3,6 +3,7 @@ import pytest
 def addition(a,b):
     try:
         add = a+b
+        add = a+b
         return add+"c"
     except Exception as e:
         print(e)
