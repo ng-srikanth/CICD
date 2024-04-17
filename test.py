@@ -1,9 +1,9 @@
 import pytest
 
-def addition(a, b):
-    # Intentionally fail the function
-    raise ValueError("Intentional function failure")
-
-def test_addition():
-    with pytest.raises(ValueError):
-        addition(2, 2)
+def addition(a,b):
+    try:
+        add = a+b
+        return add+"c"
+    except Exception as e:
+        print(e)
+addition(2,3)
