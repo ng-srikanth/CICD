@@ -1,5 +1,4 @@
-def addition(a,b):
-    add = a+b
-    print(add)
-    return add
-addition(2,2)
+def addition(a, b):
+    raise ValueError("fail case")
+
+addition(2, 2)
