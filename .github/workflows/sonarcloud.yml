@@ -73,6 +73,6 @@ jobs:
         with:
           args: >
             -Dsonar.sources=.
-            -Dsonar.python.coverage.reportPaths=coverage.xml
+            -Dsonar.python.coverage.reportPaths=coverage-*.xml
 
 
