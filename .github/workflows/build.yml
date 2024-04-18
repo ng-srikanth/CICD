@@ -19,29 +19,7 @@
 #           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 #           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 # ///////////////////////////////////////////////////////////////////////
-name: Build
-on:
-  push:
-    branches:
-      - Dev
-      - QA
-  pull_request:
-    branches:
-      - main
-jobs:
-  sonarcloud:
-    name: SonarCloud
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-      - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-
+# name: Build
 # on:
 #   push:
 #     branches:
@@ -55,24 +33,46 @@ jobs:
 #     name: SonarCloud
 #     runs-on: ubuntu-latest
 #     steps:
-#       - uses: actions/checkout@v2
+#       - uses: actions/checkout@v3
 #         with:
-#           fetch-depth: 0
-#       - name: Setup Python
-#         uses: actions/setup-python@v2
-#         with:
-#           python-version: ${{ matrix.python }}
-#       - name: Install tox and any other packages
-#         run: pip install tox
-#       - name: Run tox with coverage
-#         run: tox -e py -- --cov=addition --cov-report=xml
-#       - name: Upload coverage to SonarCloud
+#           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+#       - name: SonarCloud Scan
 #         uses: SonarSource/sonarcloud-github-action@master
 #         env:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
 #           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-#         with:
-#           args: >
-#             -Dsonar.sources=.
-#             -Dsonar.python.coverage.reportPaths=coverage.xml
+
+on:
+  push:
+    branches:
+      - Dev
+      - QA
+  pull_request:
+    branches:
+      - main
+jobs:
+  sonarcloud:
+    name: SonarCloud
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Install tox and any other packages
+        run: pip install tox
+      - name: Run tox with coverage
+        run: tox -e py -- --cov=addition --cov-report=xml
+      - name: Upload coverage to SonarCloud
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.sources=.
+            -Dsonar.python.coverage.reportPaths=coverage.xml
 
 
