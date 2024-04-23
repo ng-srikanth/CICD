@@ -54,7 +54,7 @@ jobs:
       - name: Install tox and any other packages
         run: pip install tox
       - name: Run tox with coverage
-        run: tox -e py -- --cov=test_module --cov-report=xml
+        run: tox -e py -- --cov=addition --cov-report=xml
       - name: Upload coverage to SonarCloud
         uses: SonarSource/sonarcloud-github-action@master
         env:
