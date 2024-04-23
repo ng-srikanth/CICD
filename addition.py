@@ -14,7 +14,10 @@ def sub(x, y):
     return x - y
 
 def create_duplicate(x, y):
-    return x + y
+    if x > 0:
+        return x + y
+    else:
+        return y
 def create_duplicate_sub(x,y):
     return x - y
 
