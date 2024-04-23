@@ -79,7 +79,10 @@ on:
   push:
     branches:
       - Dev
+      - QA
   pull_request:
+    branches:
+      - main
     types: [opened, synchronize, reopened]
 jobs:
   sonarcloud:
