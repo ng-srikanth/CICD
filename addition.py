@@ -2,10 +2,7 @@ def add(x, y):
     return x + y
 
 def sub(x, y):
-    if y > 0:
-        return x - y
-    else:
-        return x
+    return x - y
 
 add(1, 2)
 sub(2, 2)
