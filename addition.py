@@ -1,5 +1,8 @@
 def add(x, y):
-    return x + y
+    if x > 0:
+        return x + y
+    else:
+        return y
 
 def sub(x, y):
     return x - y
