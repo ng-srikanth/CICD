@@ -1,8 +1,4 @@
 def add(x, y):
-    # if x > 0:
-    #     return x + y
-    # else:
-    #     return y
     return x + y
 
 def sub(x, y):
