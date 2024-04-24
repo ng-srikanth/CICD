@@ -8,4 +8,4 @@ def count_even_odd(n):
             count_odd+=1
     return count_even,count_odd
 
-print(count_even_odd(100))
+count_even_odd(100)
